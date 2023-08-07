@@ -50,7 +50,7 @@ Gives us a Jenkins login.
 
 The default password seems to be 'password' but this doesn't work. Try some basic logins and find **admin:admin** works.
 
-![pannel](jenkinspannel.png)
+![pannel](jenkins_pannel.png)
 
 
 ### executing system commands from jenkins
@@ -59,7 +59,7 @@ http://10.10.21.16:8080/job/project/configure
 
 Select 'Save' and then select 'Build Now'.
 
-![jenkins batch](jenkins_batch_conflig.png)
+![jenkins batch](jenkins_batch_config.png)
 
 ![jenkins build](jenkins_build_now.png)
 
